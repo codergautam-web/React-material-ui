@@ -6,6 +6,7 @@ import Footer from './ui/Footer';
 import Header from './ui/Header';
 import MainPage from './ui/MainPage';
 import CardData from './ui/CardData';
+import Form from './ui/Form';
 
 const theme = createTheme();
 
@@ -17,6 +18,7 @@ export default function App() {
       <main>
         <MainPage />
         <CardData />
+        <Form />
       </main>
       <Footer />
     </ThemeProvider>

@@ -4,9 +4,7 @@ import {
   Grid,
   Card,
   CardMedia,
-  CardActions,
   Typography,
-  Button,
   CardContent,
 } from '@mui/material';
 const cards = [1, 2, 3, 4, 5, 6, 7, 8];
