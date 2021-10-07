@@ -137,7 +137,7 @@ const Form = () => {
                         {...register('name', { required: true })}
                       />
                       {errors.name && (
-                        <Typography variant='small' align='center'>
+                        <Typography variant='caption' color="red" align='center'>
                           This field is required
                         </Typography>
                       )}
@@ -155,7 +155,7 @@ const Form = () => {
                         {...register('email', { required: true })}
                       />
                       {errors.email && (
-                        <Typography variant='small' align='center'>
+                        <Typography variant='caption' color="red" align='center'>
                           This field is required
                         </Typography>
                       )}
@@ -169,7 +169,15 @@ const Form = () => {
                         variant='outlined'
                         fullWidth
                         className={classes.inputField}
+                        name='phone'
+                        sx={{mt: 0}}
+                        {...register('phone', { required: true })}
                       />
+                      {errors.phone && (
+                        <Typography variant='caption' color="red" align='center'>
+                          This field is required
+                        </Typography>
+                      )}
                     </Grid>
 
                     <Grid item xs={12} md={6} lg={6} xl={6}>
