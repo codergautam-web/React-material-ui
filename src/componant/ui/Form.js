@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Card,
@@ -16,16 +16,17 @@ import {
   Radio,
   InputLabel,
   //   Switch,
-  Select,
   MenuItem,
   Button,
-//   FormHelperText,
+  //   FormHelperText,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogContentText,
   DialogActions,
 } from '@mui/material';
+
+import Select from 'react-select';
 
 // eslint-disable-next-line
 import Icon from '@mui/material/Icon';
@@ -64,17 +65,25 @@ const Form = () => {
   } = useForm();
 
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  // console.log(errors);
 
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = (e) => {
+    // setOpen(true);
+    setSelectedClient(e.value);
+    console.log(e);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  const [selectedClient, setSelectedClient] = useState('');
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
 
   return (
     <Container sx={{ py: 8 }} maxWidth='lg'>
@@ -137,7 +146,10 @@ const Form = () => {
                         {...register('name', { required: true })}
                       />
                       {errors.name && (
-                        <Typography variant='caption' color="red" align='center'>
+                        <Typography
+                          variant='caption'
+                          color='red'
+                          align='center'>
                           This field is required
                         </Typography>
                       )}
@@ -155,7 +167,10 @@ const Form = () => {
                         {...register('email', { required: true })}
                       />
                       {errors.email && (
-                        <Typography variant='caption' color="red" align='center'>
+                        <Typography
+                          variant='caption'
+                          color='red'
+                          align='center'>
                           This field is required
                         </Typography>
                       )}
@@ -170,11 +185,14 @@ const Form = () => {
                         fullWidth
                         className={classes.inputField}
                         name='phone'
-                        sx={{mt: 0}}
+                        sx={{ mt: 0 }}
                         {...register('phone', { required: true })}
                       />
                       {errors.phone && (
-                        <Typography variant='caption' color="red" align='center'>
+                        <Typography
+                          variant='caption'
+                          color='red'
+                          align='center'>
                           This field is required
                         </Typography>
                       )}
@@ -210,6 +228,37 @@ const Form = () => {
                           <MenuItem value='Trading'>Trading</MenuItem>
                           <MenuItem value='Stratagy'>Stratagy</MenuItem>
                         </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={6} lg={6} xl={6}>
+                      {/* Select */}
+                      <FormControl fullWidth className={classes.inputField}>
+                        {/* <Select
+                          onChange={(e) => handleClickOpen(e.target.value)}
+                          className='select2'>
+                          <MenuItem value=''>Choose your course</MenuItem>
+                          <MenuItem value='Trading'>Trading</MenuItem>
+                          <MenuItem value='Stratagy'>Stratagy</MenuItem>
+                        </Select> */}
+
+                        <Select
+                          // value={selectedClient}
+                          onChange={handleClickOpen}
+                          options={options}
+                          // value={options.filter(function (option) {
+                          //   return (
+                          //     <>
+                          //       option.value === selectedClient 
+                          //       if(option.value === 'chocolate'){
+                          //         setOpen(true)
+                          //       }
+                          //       else{
+                          //         setOpen(false)
+                          //       }
+                          //     </>
+                          //   );
+                          // })}
+                        />
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6} xl={6}></Grid>
